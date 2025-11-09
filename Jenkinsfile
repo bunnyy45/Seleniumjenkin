@@ -1,6 +1,10 @@
 pipeline{
-	agent any
-	
+agent {
+        docker {
+            image 'maven:3.8.1-jdk-11' // Use a Maven image with JDK 11 (common requirement)
+            args '-u root' // This ensures Jenkins has the necessary permissions inside the temporary container
+        }
+    }	
 	stages{
 		
 		stage('1st Phase Checkout and Setup'){
